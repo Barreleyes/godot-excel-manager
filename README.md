@@ -2,6 +2,7 @@
 
 Godot 4.x 配置文件管理工具，支持从 Excel 文件自动生成类型安全的配置代码和 JSON 数据。
 
+本工具依赖 https://github.com/LaoDie1/godot-excel-reader
 ## 插件原理
 
 ### 核心架构
