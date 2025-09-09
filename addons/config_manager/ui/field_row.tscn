@@ -1,0 +1,80 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw4xn8qfqw8qj"]
+
+[ext_resource type="Script" uid="uid://1nqy8pty2b8m" path="res://addons/config_manager/scripts/field_row.gd" id="1_field_row"]
+
+[node name="FieldRow" type="HBoxContainer"]
+script = ExtResource("1_field_row")
+
+[node name="FieldNameEdit" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+placeholder_text = "字段名"
+
+[node name="FieldTypeOption" type="OptionButton" parent="."]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+selected = 0
+item_count = 15
+popup/item_0/text = "Key"
+popup/item_0/id = 0
+popup/item_1/text = "String"
+popup/item_1/id = 1
+popup/item_2/text = "StringName"
+popup/item_2/id = 2
+popup/item_3/text = "int"
+popup/item_3/id = 3
+popup/item_4/text = "float"
+popup/item_4/id = 4
+popup/item_5/text = "bool"
+popup/item_5/id = 5
+popup/item_6/text = "Vector2"
+popup/item_6/id = 6
+popup/item_7/text = "Vector2i"
+popup/item_7/id = 7
+popup/item_8/text = "Vector3"
+popup/item_8/id = 8
+popup/item_9/text = "Vector3i"
+popup/item_9/id = 9
+popup/item_10/text = "NodePath"
+popup/item_10/id = 10
+popup/item_11/text = "ArrayInt"
+popup/item_11/id = 11
+popup/item_12/text = "ArrayFloat"
+popup/item_12/id = 12
+popup/item_13/text = "ArrayString"
+popup/item_13/id = 13
+popup/item_14/text = "Enum"
+popup/item_14/id = 14
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EnumTypeOption" type="OptionButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DefaultValueEdit" type="LineEdit" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "默认值"
+
+[node name="MoveUpBtn" type="Button" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+tooltip_text = "向上移动"
+text = "↑"
+
+[node name="MoveDownBtn" type="Button" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+tooltip_text = "向下移动"
+text = "↓"
+
+[node name="DeleteBtn" type="Button" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+tooltip_text = "删除字段"
+text = "🗑"

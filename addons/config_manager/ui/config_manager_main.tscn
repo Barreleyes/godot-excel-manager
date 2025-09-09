@@ -1,0 +1,450 @@
+[gd_scene load_steps=9 format=3 uid="uid://b7xq7y8x2q8gj"]
+
+[ext_resource type="Script" uid="uid://crgkhvgl2cqu6" path="res://addons/config_manager/scripts/config_manager.gd" id="1_0h8m3"]
+[ext_resource type="Texture2D" uid="uid://b3helc42n4qw1" path="res://addons/config_manager/icons/notepad.png" id="2_6iw4m"]
+[ext_resource type="Script" uid="uid://bc0v508p5o65n" path="res://addons/config_manager/scripts/draggable_tree.gd" id="2_draggable_tree"]
+[ext_resource type="Texture2D" uid="uid://b72n4bsl24k8j" path="res://addons/config_manager/icons/Code.png" id="2_u6nqv"]
+[ext_resource type="Texture2D" uid="uid://cjogvii8ygxvc" path="res://addons/config_manager/icons/app-json.png" id="4_vpqqr"]
+[ext_resource type="Texture2D" uid="uid://cupnmu8fvpbme" path="res://addons/config_manager/icons/excel-folder-icon.png" id="5_sf6kf"]
+[ext_resource type="Texture2D" uid="uid://fcntp23e658v" path="res://addons/config_manager/icons/setting.png" id="6_vpqqr"]
+[ext_resource type="Texture2D" uid="uid://pi52n4pvboc6" path="res://addons/config_manager/icons/duck.png" id="8_sf6kf"]
+
+[node name="ConfigManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_0h8m3")
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Toolbar" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="SearchEdit" type="LineEdit" parent="VBoxContainer/Toolbar"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "搜索配置文件..."
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/Toolbar"]
+layout_mode = 2
+
+[node name="RegenerateBtn" type="Button" parent="VBoxContainer/Toolbar"]
+layout_mode = 2
+tooltip_text = "重新扫描Excel文件并生成类定义和枚举"
+text = "重新生成所有定义"
+
+[node name="ExportJsonBtn" type="Button" parent="VBoxContainer/Toolbar"]
+layout_mode = 2
+tooltip_text = "将所有Excel配置文件导出为JSON格式"
+text = "导出所有配置为JSON"
+
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/Toolbar"]
+layout_mode = 2
+
+[node name="OpenCode" type="Button" parent="VBoxContainer/Toolbar"]
+layout_mode = 2
+tooltip_text = "打开类定义文件 (table_classes.gd)"
+text = "     "
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Toolbar/OpenCode"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -11.0
+offset_right = 11.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_u6nqv")
+expand_mode = 1
+
+[node name="OpenEnumFile" type="Button" parent="VBoxContainer/Toolbar"]
+layout_mode = 2
+tooltip_text = "打开枚举定义文件 (enums.gd)"
+text = "      "
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Toolbar/OpenEnumFile"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_6iw4m")
+expand_mode = 1
+
+[node name="OpenJsonFolder" type="Button" parent="VBoxContainer/Toolbar"]
+layout_mode = 2
+tooltip_text = "在资源管理器中打开JSON导出文件夹"
+text = "     "
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Toolbar/OpenJsonFolder"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.5
+offset_top = -12.5
+offset_right = 12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_vpqqr")
+expand_mode = 1
+
+[node name="OpenExcelFolder" type="Button" parent="VBoxContainer/Toolbar"]
+layout_mode = 2
+tooltip_text = "在资源管理器中打开Excel配置文件夹"
+text = "     "
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Toolbar/OpenExcelFolder"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -11.0
+offset_right = 11.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_sf6kf")
+expand_mode = 1
+
+[node name="ConfigBtn" type="Button" parent="VBoxContainer/Toolbar"]
+layout_mode = 2
+tooltip_text = "配置管理器设置 (路径配置)"
+text = "     "
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Toolbar/ConfigBtn"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -11.0
+offset_right = 11.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_vpqqr")
+expand_mode = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ContentArea" type="HSplitContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+split_offset = 400
+
+[node name="LeftPanel" type="VBoxContainer" parent="VBoxContainer/ContentArea"]
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer/ContentArea/LeftPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 1
+
+[node name="Excel管理" type="VBoxContainer" parent="VBoxContainer/ContentArea/LeftPanel/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Control" type="Control" parent="VBoxContainer/ContentArea/LeftPanel/TabContainer/Excel管理"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ContentArea/LeftPanel/TabContainer/Excel管理/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 300.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "文件列表"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ContentArea/LeftPanel/TabContainer/Excel管理/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -258.0
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="NewFolderBtn" type="Button" parent="VBoxContainer/ContentArea/LeftPanel/TabContainer/Excel管理/Control/HBoxContainer"]
+layout_mode = 2
+text = "新建文件夹"
+
+[node name="NewExcelBtn" type="Button" parent="VBoxContainer/ContentArea/LeftPanel/TabContainer/Excel管理/Control/HBoxContainer"]
+layout_mode = 2
+text = "新建Excel文件"
+
+[node name="RefreshButton" type="Button" parent="VBoxContainer/ContentArea/LeftPanel/TabContainer/Excel管理/Control/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "刷新"
+
+[node name="FileTree" type="Tree" parent="VBoxContainer/ContentArea/LeftPanel/TabContainer/Excel管理"]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("2_draggable_tree")
+
+[node name="Enum管理" type="VBoxContainer" parent="VBoxContainer/ContentArea/LeftPanel/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Control" type="Control" parent="VBoxContainer/ContentArea/LeftPanel/TabContainer/Enum管理"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ContentArea/LeftPanel/TabContainer/Enum管理/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -11.5
+offset_right = 120.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "Enum列表"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ContentArea/LeftPanel/TabContainer/Enum管理/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -12.5
+offset_right = -4.0
+offset_bottom = 18.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="NewEnum" type="Button" parent="VBoxContainer/ContentArea/LeftPanel/TabContainer/Enum管理/Control/HBoxContainer"]
+layout_mode = 2
+text = "新建枚举"
+
+[node name="RefreshButton" type="Button" parent="VBoxContainer/ContentArea/LeftPanel/TabContainer/Enum管理/Control/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "刷新"
+
+[node name="EnumTree" type="Tree" parent="VBoxContainer/ContentArea/LeftPanel/TabContainer/Enum管理"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RightPanel" type="VBoxContainer" parent="VBoxContainer/ContentArea"]
+layout_mode = 2
+
+[node name="InfoLabel" type="Label" parent="VBoxContainer/ContentArea/RightPanel"]
+visible = false
+layout_mode = 2
+text = "选择一个配置文件查看详情..."
+horizontal_alignment = 1
+
+[node name="PropertyViewSwitcher" type="TabContainer" parent="VBoxContainer/ContentArea/RightPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 2
+tabs_visible = false
+
+[node name="Control" type="Control" parent="VBoxContainer/ContentArea/RightPanel/PropertyViewSwitcher"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ContentArea/RightPanel/PropertyViewSwitcher/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.0
+offset_top = -64.0
+offset_right = 71.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ContentArea/RightPanel/PropertyViewSwitcher/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("8_sf6kf")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ContentArea/RightPanel/PropertyViewSwitcher/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+text = "请在左侧列表中选择Excel/Enum"
+vertical_alignment = 2
+
+[node name="TableProperties" type="VBoxContainer" parent="VBoxContainer/ContentArea/RightPanel/PropertyViewSwitcher"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+metadata/_tab_index = 1
+
+[node name="TableStructureLabel" type="Label" parent="VBoxContainer/ContentArea/RightPanel/PropertyViewSwitcher/TableProperties"]
+layout_mode = 2
+text = "表结构"
+
+[node name="FieldToolbar" type="HBoxContainer" parent="VBoxContainer/ContentArea/RightPanel/PropertyViewSwitcher/TableProperties"]
+layout_mode = 2
+
+[node name="AddFieldBtn" type="Button" parent="VBoxContainer/ContentArea/RightPanel/PropertyViewSwitcher/TableProperties/FieldToolbar"]
+layout_mode = 2
+tooltip_text = "向表中添加新的字段定义"
+text = "新建字段"
+
+[node name="ExportFileJson" type="Button" parent="VBoxContainer/ContentArea/RightPanel/PropertyViewSwitcher/TableProperties/FieldToolbar"]
+layout_mode = 2
+tooltip_text = "导出当前选中的Excel文件为JSON格式"
+text = "导出 JSON数据"
+
+[node name="OpenExcel" type="Button" parent="VBoxContainer/ContentArea/RightPanel/PropertyViewSwitcher/TableProperties/FieldToolbar"]
+layout_mode = 2
+tooltip_text = "导出当前选中的Excel文件为JSON格式"
+text = "打开Excel文件"
+
+[node name="Spacer" type="Control" parent="VBoxContainer/ContentArea/RightPanel/PropertyViewSwitcher/TableProperties/FieldToolbar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FieldListContainer" type="ScrollContainer" parent="VBoxContainer/ContentArea/RightPanel/PropertyViewSwitcher/TableProperties"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="FieldList" type="VBoxContainer" parent="VBoxContainer/ContentArea/RightPanel/PropertyViewSwitcher/TableProperties/FieldListContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ContentArea/RightPanel/PropertyViewSwitcher/TableProperties"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+alignment = 1
+
+[node name="CopyBtn" type="Button" parent="VBoxContainer/ContentArea/RightPanel/PropertyViewSwitcher/TableProperties/HBoxContainer"]
+layout_mode = 2
+tooltip_text = "复制表结构到剪贴板，可直接粘贴到Excel中"
+text = "复制表结构"
+
+[node name="CopyEnumDefine" type="Button" parent="VBoxContainer/ContentArea/RightPanel/PropertyViewSwitcher/TableProperties/HBoxContainer"]
+layout_mode = 2
+tooltip_text = "复制表结构到剪贴板，可直接粘贴到Excel中"
+text = "复制枚举定义"
+
+[node name="EnumProperties" type="VBoxContainer" parent="VBoxContainer/ContentArea/RightPanel/PropertyViewSwitcher"]
+layout_mode = 2
+size_flags_vertical = 3
+metadata/_tab_index = 2
+
+[node name="Control" type="Control" parent="VBoxContainer/ContentArea/RightPanel/PropertyViewSwitcher/EnumProperties"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="EnumName" type="Label" parent="VBoxContainer/ContentArea/RightPanel/PropertyViewSwitcher/EnumProperties/Control"]
+layout_mode = 0
+offset_right = 740.0
+offset_bottom = 23.0
+text = "Enum结构"
+
+[node name="IsFlag" type="CheckBox" parent="VBoxContainer/ContentArea/RightPanel/PropertyViewSwitcher/EnumProperties/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -74.0
+offset_top = -15.5
+offset_right = -6.0
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "FLAG"
+
+[node name="EnumDesc" type="LineEdit" parent="VBoxContainer/ContentArea/RightPanel/PropertyViewSwitcher/EnumProperties"]
+layout_mode = 2
+
+[node name="Toolbar" type="HBoxContainer" parent="VBoxContainer/ContentArea/RightPanel/PropertyViewSwitcher/EnumProperties"]
+layout_mode = 2
+
+[node name="AddEnumValue" type="Button" parent="VBoxContainer/ContentArea/RightPanel/PropertyViewSwitcher/EnumProperties/Toolbar"]
+layout_mode = 2
+text = "新建枚举值"
+
+[node name="DelEnum" type="Button" parent="VBoxContainer/ContentArea/RightPanel/PropertyViewSwitcher/EnumProperties/Toolbar"]
+layout_mode = 2
+text = "删除枚举"
+
+[node name="Spacer" type="Control" parent="VBoxContainer/ContentArea/RightPanel/PropertyViewSwitcher/EnumProperties/Toolbar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EnumListContainer" type="ScrollContainer" parent="VBoxContainer/ContentArea/RightPanel/PropertyViewSwitcher/EnumProperties"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EnumValueList" type="VBoxContainer" parent="VBoxContainer/ContentArea/RightPanel/PropertyViewSwitcher/EnumProperties/EnumListContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SaveBtn" type="Button" parent="VBoxContainer/ContentArea/RightPanel/PropertyViewSwitcher/EnumProperties"]
+layout_mode = 2
+text = "保存枚举"
+
+[node name="FileContextMenu" type="PopupMenu" parent="."]
+item_count = 5
+item_0/text = "打开"
+item_0/id = 0
+item_1/text = "打开所在文件夹"
+item_1/id = 1
+item_2/text = "重命名"
+item_2/id = 2
+item_3/id = -1
+item_3/separator = true
+item_4/text = "删除"
+item_4/id = 3
+
+[connection signal="tab_changed" from="VBoxContainer/ContentArea/LeftPanel/TabContainer" to="." method="_on_tab_container_tab_changed"]

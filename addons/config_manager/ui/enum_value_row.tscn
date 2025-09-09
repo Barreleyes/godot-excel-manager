@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1qywlfvhdmls"]
+
+[ext_resource type="Script" uid="uid://c0r5fhop5bry8" path="res://addons/config_manager/scripts/enum_value_row.gd" id="1_enum_value_row"]
+
+[node name="EnumValueRow" type="HBoxContainer"]
+script = ExtResource("1_enum_value_row")
+
+[node name="ValueLabel" type="Label" parent="."]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="NameEdit" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "枚举值名称"
+
+[node name="CommentEdit" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "备注信息"
+
+[node name="MoveUpBtn" type="Button" parent="."]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "↑"
+
+[node name="MoveDownBtn" type="Button" parent="."]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "↓"
+
+[node name="DeleteBtn" type="Button" parent="."]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "🗑"

@@ -1,0 +1,115 @@
+[gd_scene load_steps=2 format=3 uid="uid://bo7qfqyx1x8g3"]
+
+[ext_resource type="Script" uid="uid://bua5uryqnt0s8" path="res://addons/config_manager/scripts/config_dialog.gd" id="1_1m8b5"]
+
+[node name="ConfigDialog" type="AcceptDialog"]
+oversampling_override = 1.0
+title = "配置管理器设置"
+initial_position = 1
+size = Vector2i(500, 450)
+script = ExtResource("1_1m8b5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 492.0
+offset_bottom = 331.0
+
+[node name="ExcelRootLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Excel配置根目录:"
+
+[node name="ExcelRootContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ExcelRootEdit" type="LineEdit" parent="VBoxContainer/ExcelRootContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "res://Configs/"
+
+[node name="ExcelRootBrowseBtn" type="Button" parent="VBoxContainer/ExcelRootContainer"]
+layout_mode = 2
+text = "浏览..."
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ClassesRootLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "结构定义类目录:"
+
+[node name="ClassesRootContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ClassesRootEdit" type="LineEdit" parent="VBoxContainer/ClassesRootContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "res://Scripts/ConfigClasses/"
+
+[node name="ClassesRootBrowseBtn" type="Button" parent="VBoxContainer/ClassesRootContainer"]
+layout_mode = 2
+text = "浏览..."
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="JsonExportLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "JSON导出目录:"
+
+[node name="JsonExportContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="JsonExportEdit" type="LineEdit" parent="VBoxContainer/JsonExportContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "res://Configs/Json/"
+
+[node name="JsonExportBrowseBtn" type="Button" parent="VBoxContainer/JsonExportContainer"]
+layout_mode = 2
+text = "浏览..."
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="EnumPathLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Enum定义目录:"
+
+[node name="EnumPathContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="EnumPathEdit" type="LineEdit" parent="VBoxContainer/EnumPathContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "res://Scripts/Enums/"
+
+[node name="EnumPathBrowseBtn" type="Button" parent="VBoxContainer/EnumPathContainer"]
+layout_mode = 2
+text = "浏览..."
+
+[node name="HSeparator4" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="VBoxContainer/ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CancelBtn" type="Button" parent="VBoxContainer/ButtonContainer"]
+layout_mode = 2
+text = "取消"
+
+[node name="SaveBtn" type="Button" parent="VBoxContainer/ButtonContainer"]
+layout_mode = 2
+text = "保存"
+
+[node name="DirDialog" type="FileDialog" parent="."]
+title = "Open a Directory"
+file_mode = 2
+access = 2
