@@ -9,8 +9,6 @@ extends AcceptDialog
 @onready var json_export_browse_btn: Button = $VBoxContainer/JsonExportContainer/JsonExportBrowseBtn
 @onready var enum_path_edit: LineEdit = $VBoxContainer/EnumPathContainer/EnumPathEdit
 @onready var enum_path_browse_btn: Button = $VBoxContainer/EnumPathContainer/EnumPathBrowseBtn
-@onready var cancel_btn: Button = $VBoxContainer/ButtonContainer/CancelBtn
-@onready var save_btn: Button = $VBoxContainer/ButtonContainer/SaveBtn
 @onready var dir_dialog: FileDialog = $DirDialog
 
 var config_manager: Control
@@ -26,8 +24,6 @@ func _connect_signals():
 	classes_root_browse_btn.pressed.connect(_on_classes_root_browse_pressed)
 	json_export_browse_btn.pressed.connect(_on_json_export_browse_pressed)
 	enum_path_browse_btn.pressed.connect(_on_enum_path_browse_pressed)
-	cancel_btn.pressed.connect(_on_cancel_pressed)
-	save_btn.pressed.connect(_on_save_pressed)
 	dir_dialog.dir_selected.connect(_on_dir_selected)
 
 func setup(manager: Control, excel_root: String, classes_root: String, json_export: String = "res://Configs/Json/", enum_path: String = "res://Scripts/Enums/"):

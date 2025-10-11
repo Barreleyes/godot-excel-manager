@@ -2,21 +2,23 @@
 
 [ext_resource type="Script" uid="uid://bua5uryqnt0s8" path="res://addons/config_manager/scripts/config_dialog.gd" id="1_1m8b5"]
 
-[node name="ConfigDialog" type="AcceptDialog"]
-oversampling_override = 1.0
+[node name="ConfigDialog" type="ConfirmationDialog"]
 title = "配置管理器设置"
 initial_position = 1
-size = Vector2i(500, 450)
+size = Vector2i(500, 337)
+visible = true
 script = ExtResource("1_1m8b5")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.693
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 492.0
-offset_bottom = 331.0
+offset_right = -8.0
+offset_bottom = 54.459
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ExcelRootLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
@@ -101,15 +103,11 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CancelBtn" type="Button" parent="VBoxContainer/ButtonContainer"]
-layout_mode = 2
-text = "取消"
-
-[node name="SaveBtn" type="Button" parent="VBoxContainer/ButtonContainer"]
-layout_mode = 2
-text = "保存"
-
 [node name="DirDialog" type="FileDialog" parent="."]
 title = "Open a Directory"
+ok_button_text = "Select Current Folder"
 file_mode = 2
 access = 2
+
+[connection signal="canceled" from="." to="." method="_on_cancel_pressed"]
+[connection signal="confirmed" from="." to="." method="_on_save_pressed"]
